@@ -1,4 +1,7 @@
 # Ansible Playbook Hierarchy
+
+The recommended file tree structure for an ideal Ansible playbook.
+
 ```
 production                # inventory file for production servers
 staging                   # inventory file for staging environment
