@@ -5,6 +5,7 @@ pipeline {
         stage('Plan') {
             steps {
                 echo 'ansible-playbook site.yml -f 5 -e provider=docker -e tf_state=absent --check'
+                sh 'whoami ; which terraform ; which ansible'
                 sh 'ansible-playbook site.yml -f 5 -e provider=docker -e tf_state=absent --check'
             }
         }
