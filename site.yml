@@ -1,0 +1,9 @@
+---
+- name: Test
+  hosts: localhost
+  gather_facts: false
+#  become: true
+  connection: local
+  tasks:
+    - import_role:
+       name: terraform
