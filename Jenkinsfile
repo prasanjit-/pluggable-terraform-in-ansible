@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Plan') {
             steps {
-                echo 'Building..'
+                echo 'ansible-playbook site.yml -f 5 -e provider=docker -e tf_state=absent --check'
+                sh 'ansible-playbook site.yml -f 5 -e provider=docker -e tf_state=absent --check'
             }
         }
         stage('Test') {
