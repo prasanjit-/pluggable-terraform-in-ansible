@@ -11,16 +11,3 @@
 - name:           output
   debug:
     var: tf_output
-
-
-# - name:           apply
-#   terraform:
-#     project_path: '{{ playbook_dir }}/terraform_scripts/providers/docker'
-#     lock:         true
-#     state:        present
-#
-# - name:           destroy
-#   terraform:
-#     project_path: '{{ playbook_dir }}/terraform_scripts/providers/docker'
-#     lock:         true
-#     state:        absent
