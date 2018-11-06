@@ -1,7 +1,7 @@
 ---
 - name: terraform being executed
   terraform:
-    project_path: '{{ playbook_dir }}/terraform_scripts/providers/{{provider}}'
+    project_path: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}'
     #plan_file: '{{ playbook_dir }}/terraform_scripts/providers/docker/tfplan'
     lock: true
     force_init: yes
