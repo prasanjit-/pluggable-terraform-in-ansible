@@ -1,5 +1,5 @@
 ---
-- name: terraform is executed
+- name: terraform being executed
   terraform:
     project_path: '{{ playbook_dir }}/terraform_scripts/providers/{{provider}}'
     #plan_file: '{{ playbook_dir }}/terraform_scripts/providers/docker/tfplan'
@@ -14,7 +14,7 @@
   debug:
     var: tf_output
 
-- name: new host added
+- name: new host being added
   add_host:
     name: "{{ tf_output.outputs.public_dns.value }}"
     groups: just_created
