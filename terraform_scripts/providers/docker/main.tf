@@ -8,7 +8,7 @@ provider "docker" {
 # Create an Web Server container
 resource "docker_container" "nginx" {
   image = "${docker_image.nginx.latest}"
-  name  = "Nginx"
+  name  = "${var.instance_name}"
   ports {
     internal = 8011
     external = 8011
