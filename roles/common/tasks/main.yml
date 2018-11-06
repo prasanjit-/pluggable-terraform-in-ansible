@@ -1,8 +1,0 @@
-- name: copying directory with terraform_scripts
-  copy:
-    src: "{{ playbook_dir }}/terraform_scripts"
-    dest: /tmp/terraform_scripts
-    owner: root
-    group: root
-    mode: 0777
-    directory_mode: yes
