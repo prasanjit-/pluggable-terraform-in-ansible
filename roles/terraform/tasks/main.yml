@@ -7,7 +7,7 @@
     force_init: yes
     state: "{{tf_state}}"
     variables:
-      instance_name: "{{inst_name}}"
+      instance_name: "{{instance_name}}"
   register: tf_output
 
 - name: output
