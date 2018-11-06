@@ -2,7 +2,7 @@ terraform {
 
   backend "s3" {
 
-    profile = "containers"
+    profile = "poc"
     region  = "eu-west-1"
 
     bucket          = "containers-terraform-state-storage"
@@ -14,6 +14,6 @@ terraform {
 }
 
 provider "aws" {
-  profile = "containers"
+  profile = "poc"
   region  = "eu-west-1"
 }
