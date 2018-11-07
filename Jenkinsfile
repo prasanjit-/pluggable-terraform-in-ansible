@@ -48,7 +48,7 @@ pipeline {
             }
             steps {
                 echo 'Excecuting Terraform Apply..'
-                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${Region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
 
 
             }
