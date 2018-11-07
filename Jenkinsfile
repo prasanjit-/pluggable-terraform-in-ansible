@@ -37,7 +37,7 @@ pipeline {
                       }
             }
         }
-        stage('Deploy') {
+        stage('Terraform Apply') {
           when {
             environment name: 'TERRAFORM_APPLY', value: 'yes'
             }
