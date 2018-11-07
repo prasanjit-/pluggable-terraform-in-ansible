@@ -23,18 +23,29 @@ pipeline {
     stages {
         stage('Terraform Plan') {
             steps {
-
+                echo 'Excecuting Terraform Plan..'
                 sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
             }
         }
-        stage('Terraform Apply') {
+        stage('User Input') {
+
             steps {
-                echo 'Testing..'
+
+              script {
+                        env.TERRAFORM_APPLY = input message: 'User input required',
+                            parameters: [choice(name: 'Apply Terraform?', choices: 'no\nyes', description: 'Choose "yes" if you want to apply this plan')]
+                      }
             }
         }
         stage('Deploy') {
+          when {
+            environment name: 'TERRAFORM_APPLY', value: 'yes'
+            }
             steps {
-                echo 'Deploying....'
+                echo 'Excecuting Terraform Apply..'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
+
+
             }
         }
     }
