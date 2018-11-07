@@ -1,6 +1,8 @@
-# Ansible Playbook Hierarchy
+# Recommended Ansible Playbook Hierarchy
 
-The recommended file tree structure for an ideal Ansible playbook.
+The recommended file tree structure for an ideal Ansible playbook. Not directly related to this project.
+
+Note: This is just for reference whilst creating the playbook.
 
 ```
 production                # inventory file for production servers

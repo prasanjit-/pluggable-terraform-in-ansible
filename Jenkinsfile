@@ -15,7 +15,7 @@ pipeline {
 
           choice(
               name: 'Terraform_State',
-              choices: "present\nabsent",
+              choices: "absent\npresent",
               description: 'Specify whether you want to add or remove the Terraform implementation.')
         }
 
@@ -24,10 +24,10 @@ pipeline {
         stage('Terraform Plan') {
             steps {
 
-                sh 'ansible-playbook site.yml -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
             }
         }
-        stage('Test') {
+        stage('Terraform Apply') {
             steps {
                 echo 'Testing..'
             }
