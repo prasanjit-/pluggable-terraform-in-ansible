@@ -15,7 +15,7 @@ pipeline {
 
           choice(
               name: 'Terraform_State',
-              choices: "absent\npresent",
+              choices: "planned\nabsent\npresent",
               description: 'Specify whether you want to add or remove the Terraform implementation.')
         }
 
