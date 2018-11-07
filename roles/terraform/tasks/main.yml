@@ -16,7 +16,7 @@
 
 - name: Applying the Plan
   add_host:
-    name: "{{tf_output.outputs.instance_name.value}}"
+    name: "{{instance_name}}"
     groups: just_created
     ansible_user: admin
   when: tf_state == "present"
