@@ -13,5 +13,5 @@ terraform {
 provider "aws" {
   profile = "poc"
   //region  = "eu-west-1"
-  region  = "${var.region}"
+  region  = "${var.aws_region}"
 }

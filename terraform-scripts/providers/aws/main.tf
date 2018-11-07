@@ -22,7 +22,7 @@ resource "aws_instance" "foo-instance" {
 
   instance_type = "t3.nano"
   ami           = "ami-402f1a33"
-  region = "${var.region}"
+  region = "${var.aws_region}"
 
   subnet_id                   = "${data.aws_subnet_ids.public.ids[0]}"
   vpc_security_group_ids      = ["${data.aws_security_group.sg.id}"]

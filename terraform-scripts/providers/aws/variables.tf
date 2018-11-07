@@ -2,6 +2,6 @@ variable "instance_name" {
   description = "Instance name"
 }
 
-variable "region" {
-  description = "Region name"
+variable "aws_region" {
+  default = "eu-west-1"
 }
