@@ -9,7 +9,7 @@ pipeline {
 
           string(
               name: 'Instance_Name',
-              defaultValue: 'new_instance',
+              defaultValue: 'foo_instance',
               description: 'Name of the instance you would like to launch.',
               trim: 'false')
 
@@ -21,10 +21,10 @@ pipeline {
 
 
     stages {
-        stage('Plan') {
+        stage('Terraform Plan') {
             steps {
 
-                sh 'ansible-playbook site.yml -f 5 -e provider=aws -e tf_state=absent -e instance_name=ansible-invoked'
+                sh 'ansible-playbook site.yml -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
             }
         }
         stage('Test') {
