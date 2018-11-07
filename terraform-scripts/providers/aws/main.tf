@@ -18,7 +18,7 @@ data "aws_security_group" "sg" {
   name    = "fin-test-allow-all-sg"
 }
 
-resource "aws_instance" "new-instance" {
+resource "aws_instance" "foo_instance" {
 
   instance_type = "t3.nano"
   ami           = "ami-402f1a33"
