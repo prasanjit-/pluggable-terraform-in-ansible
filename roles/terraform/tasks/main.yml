@@ -21,8 +21,6 @@
     ansible_user: root
   when: tf_state == "present"
 
-
-- shell: echo "This is a Terraform variable --> '{{ tf_output.outputs.address.value }}'"
-  when: tf_output.outputs.address.value is defined
-- fail: msg="This variable unavailable in as this is a dry run"
-  when: tf_output.outputs.address.value is not defined
+# - name: Demonstrating that Ansible can access Terraform variables
+#   debug:
+#     msg: "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
