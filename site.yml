@@ -2,7 +2,6 @@
 - name: Demonstrating Pluggable Terraform-in-Ansible
   hosts: localhost
   gather_facts: false
-  failed_when: false
 #  become: true
   connection: local
   tasks:

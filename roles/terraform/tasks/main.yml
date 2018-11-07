@@ -24,4 +24,4 @@
 - name: Demonstrating that Ansible can access Terraform variables
   debug:
     msg: "This is a Terraform variable --> {{tf_output.outputs.address.value}}"
-  ignore_errors: yes
+  when: tf_output.outputs.address.value is defined
