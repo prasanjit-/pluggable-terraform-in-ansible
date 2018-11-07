@@ -1,7 +1,26 @@
 pipeline {
     agent any
-    parameters {
-properties([[$class: 'BuildBlockerProperty', blockLevel: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel>, blockingJobs: '', scanQueueFor: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.QueueScanScope>, useBuildBlocker: false], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '4')), disableConcurrentBuilds(), disableResume(), [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['aws', 'docker', 'gce'], description: 'Name the cloud provider where you would like to deploy.', name: 'Cloud_Provider'), string(defaultValue: 'new_instance', description: 'Name of the instance you would like to launch.', name: 'Instance_Name', trim: false), choice(choices: ['present', 'absent'], description: 'Specify whether you want to add or remove the Terraform implementation.', name: 'Terraform_State')])])
+
+        parameters {
+          choice(
+              name: 'Cloud_Provider',
+              choices: "aws\ndocker\ngce",
+              description: 'Name the cloud provider where you would like to deploy.' )
+        }
+
+        parameters {
+          string(
+              name: 'Instance_Name',
+              defaultValue: 'new_instance',
+              description: 'Name of the instance you would like to launch.'
+              trim: 'false' )
+        }
+
+        parameters {
+          choice(
+              name: 'Terraform_State',
+              choices: "present\nabsent",
+              description: 'Specify whether you want to add or remove the Terraform implementation.' )
         }
 
 
