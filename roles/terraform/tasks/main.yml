@@ -10,13 +10,13 @@
       instance_name: "{{instance_name}}"
   register: tf_output
 
-- name: output
+- name: Collecting Terraform Outputs
   debug:
     var: tf_output
 
 - name: Applying the Plan
   add_host:
-    name: "{{tf_output.outputs.tags.Name.value}}"
+    name: "{{tf_output.outputs.Name.value}}"
     groups: just_created
     ansible_user: admin
   when: tf_state == "present"
