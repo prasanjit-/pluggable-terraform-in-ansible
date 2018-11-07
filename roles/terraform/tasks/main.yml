@@ -2,7 +2,7 @@
 - name: Executing Terraform
   terraform:
     project_path: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}'
-    #plan_file: '{{ playbook_dir }}/terraform_scripts/providers/docker/tfplan'
+    #plan_file: '{{ playbook_dir }}/terraform_scripts/providers/{{provider}}/tfplan'
     lock: true
     force_init: yes
     state: "{{tf_state}}"
@@ -10,13 +10,17 @@
       instance_name: "{{instance_name}}"
   register: tf_output
 
-- name: Collecting Terraform Outputs
+- name: Print Outputs
   debug:
     var: tf_output
 
-- name: Applying the Plan
+- name: Creating the Infra
   add_host:
     name: "{{instance_name}}"
     groups: just_created
-    ansible_user: admin
+    ansible_user: root
   when: tf_state == "present"
+
+- debug:
+    msg: "System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}"
+  when: ansible_default_ipv4.gateway is defined

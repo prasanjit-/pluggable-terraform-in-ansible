@@ -16,12 +16,12 @@ pipeline {
           choice(
               name: 'Terraform_State',
               choices: "absent\npresent",
-              description: 'Specify whether you want to APPLY or DESTROY the Terraform implementation.')
+              description: 'Specify whether you want to APPLY(present) or DESTROY(absent) the Terraform implementation.')
         }
 
 
     stages {
-        stage('Terraform Plan') {
+        stage('Dry Run') {
             steps {
                 echo 'Excecuting Terraform Plan..'
                 sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
