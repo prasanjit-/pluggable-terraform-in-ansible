@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Dry Run') {
             steps {
-                echo 'Excecuting Terraform Plan..'
+                echo 'Excecuting a dry run..'
                 sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
             }
         }
