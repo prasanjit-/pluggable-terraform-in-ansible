@@ -13,7 +13,6 @@
 - name: Print Outputs
   debug:
     var: tf_output
-    ignore_errors: true
 
 - name: Deploying the Infra
   add_host:
@@ -25,4 +24,4 @@
 - name: Demonstrating that Ansible can access Terraform variables
   debug:
     msg: "This is a Terraform variable --> {{tf_output.outputs.address.value}}"
-    ignore_errors: true
+  ignore_errors: yes
