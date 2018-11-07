@@ -9,7 +9,7 @@ pipeline {
 
           string(
               name: 'Instance_Name',
-              defaultValue: 'foo_instance',
+              defaultValue: 'foo-instance',
               description: 'Name of the instance you would like to launch.',
               trim: 'false')
 
