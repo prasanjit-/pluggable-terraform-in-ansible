@@ -5,18 +5,14 @@ pipeline {
           choice(
               name: 'Cloud_Provider',
               choices: "aws\ndocker\ngce",
-              description: 'Name the cloud provider where you would like to deploy.' )
-        }
+              description: 'Name the cloud provider where you would like to deploy.' ),
 
-        parameters {
           string(
               name: 'Instance_Name',
               defaultValue: 'new_instance',
               description: 'Name of the instance you would like to launch.',
-              trim: 'false' )
-        }
+              trim: 'false' ),
 
-        parameters {
           choice(
               name: 'Terraform_State',
               choices: "present\nabsent",
