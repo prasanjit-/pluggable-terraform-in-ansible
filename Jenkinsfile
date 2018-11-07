@@ -8,7 +8,7 @@ pipeline {
               description: 'Name the cloud provider where you would like to deploy.')
 
               choice(
-                  name: 'Region',
+                  name: 'aws_region',
                   choices: "eu-west-1\neu-west-2\nus-east-1",
                   description: 'Name the region where you would like to deploy. This is to demonstrate the ability to set backend configuration during runtime')
 
@@ -29,7 +29,7 @@ pipeline {
         stage('Dry Run') {
             steps {
                 echo 'Excecuting a dry run..'
-                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${Region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${aws_region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
             }
         }
         stage('User Approval') {
@@ -48,7 +48,7 @@ pipeline {
             }
             steps {
                 echo 'Excecuting Terraform Apply..'
-                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${aws_region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
 
 
             }
