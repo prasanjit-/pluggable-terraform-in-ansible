@@ -12,7 +12,7 @@ pipeline {
           string(
               name: 'Instance_Name',
               defaultValue: 'new_instance',
-              description: 'Name of the instance you would like to launch.'
+              description: 'Name of the instance you would like to launch.',
               trim: 'false' )
         }
 
