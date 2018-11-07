@@ -22,5 +22,4 @@
   when: tf_state == "present"
 
 - debug:
-    msg: "Printing an Ansible variable {{ inventory_hostname }} and a Terraform variable  {{instance_name}}"
-  when: tf_state == "present"
+    msg: "Demonstrating an Ansible can access its own variables like {{ inventory_hostname }} or  {{instance_name}} as well as Terraform variables like {{tf_output.outputs.address.value}}"
