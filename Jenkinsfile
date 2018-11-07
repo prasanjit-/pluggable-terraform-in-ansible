@@ -1,22 +1,22 @@
 pipeline {
     agent any
 
-        parameters {
+    parameters {
           choice(
               name: 'Cloud_Provider',
               choices: "aws\ndocker\ngce",
-              description: 'Name the cloud provider where you would like to deploy.' )
+              description: 'Name the cloud provider where you would like to deploy.')
 
           string(
               name: 'Instance_Name',
               defaultValue: 'new_instance',
               description: 'Name of the instance you would like to launch.',
-              trim: 'false' )
+              trim: 'false')
 
           choice(
               name: 'Terraform_State',
               choices: "present\nabsent",
-              description: 'Specify whether you want to add or remove the Terraform implementation.' )
+              description: 'Specify whether you want to add or remove the Terraform implementation.')
         }
 
 
