@@ -7,7 +7,7 @@ variable "image" {
 }
 
 provider "google" {
-  credentials = "${file("../credentials/account.json")}"
+  credentials = "${file("account.json")}"
   project     = "bright-cccccccc-1111111"
   region      = "asia-northeast1"
 }
