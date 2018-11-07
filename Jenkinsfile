@@ -24,10 +24,11 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 echo 'Excecuting Terraform Plan..'
-                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
+                //sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
+                sh 'terraform plan'
             }
         }
-        stage('User Input') {
+        stage('User Approval') {
 
             steps {
 
@@ -43,7 +44,6 @@ pipeline {
             }
             steps {
                 echo 'Excecuting Terraform Apply..'
-                sh 'terraform plan'
                 sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name}'
 
 
