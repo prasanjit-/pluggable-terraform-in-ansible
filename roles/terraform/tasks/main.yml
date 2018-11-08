@@ -23,6 +23,10 @@
     ansible_user: root
   when: tf_state == "present"
 
-# - name: Demonstrating that Ansible can access Terraform variables
-#   debug:
-#     msg: "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
+- name: Demonstrating that Ansible can access Terraform variables
+  debug:
+    msg: "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
+    when: tf_output.outputs.address.value is defined
+
+    msg: "No tf_output was generated!"
+    when: tf_output.outputs.address.value is undefined 
