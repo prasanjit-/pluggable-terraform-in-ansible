@@ -33,7 +33,7 @@ pipeline {
         stage('Dry Run') {
             steps {
                 echo 'Excecuting a dry run..'
-                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${aws_region} -e tf_state=${Terraform_State} -e instance_name=${Instance_Name} --check'
+                sh 'ansible-playbook site.yml -i inventory/hosts -f 5 -e provider=${Cloud_Provider} -e region=${aws_region} -e tf_state=${Terraform_State} -e planfile=${State_File} -e instance_name=${Instance_Name} --check'
             }
         }
         stage('User Approval') {
