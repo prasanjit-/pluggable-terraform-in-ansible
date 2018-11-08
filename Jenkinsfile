@@ -20,8 +20,8 @@ pipeline {
 
           choice(
               name: 'Terraform_State',
-              choices: "absent\npresent",
-              description: 'Specify whether you want to APPLY(present) or DESTROY(absent) the Terraform implementation.')
+              choices: "absent\npresent\nplanned",
+              description: 'Specify whether you want to APPLY(present), DESTROY(absent) or deploy an already DECIDED (planned) Terraform implementation by supplying a tfstate file.')
         }
 
 
