@@ -23,7 +23,11 @@ pipeline {
               choices: "absent\npresent\nplanned",
               description: 'Specify whether you want to APPLY(present), DESTROY(absent) or deploy an already DECIDED (planned) Terraform implementation by supplying a tfstate file.')
         }
-
+          choice(
+              name: 'State_File',
+              choices: "none\nplan01.tfstate\nplan02.tfstate",
+              description: 'Add tfstate file to be deployed.')
+        }        
 
     stages {
         stage('Dry Run') {
