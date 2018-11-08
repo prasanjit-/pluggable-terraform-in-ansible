@@ -4,7 +4,7 @@
     project_path: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}'
     plan_file: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}/tfplans/{{planfile}}'
     lock: true
-    force_init: yes
+    force_init: true
     backend_config:
       region: "{{region}}"
     state: "{{tf_state}}"
