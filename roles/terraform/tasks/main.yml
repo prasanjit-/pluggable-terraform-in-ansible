@@ -2,9 +2,11 @@
 - name: Executing Terraform
   terraform:
     project_path: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}'
-    plan_file: '{{ playbook_dir }}/terraform_scripts/providers/{{provider}}/tfplans/{{planfile}}'
+    plan_file: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}/tfplans/{{planfile}}'
     lock: true
     force_init: yes
+    backend_config:
+      region: "{{aws_region}}"
     state: "{{tf_state}}"
     variables:
       instance_name: "{{instance_name}}"
