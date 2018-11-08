@@ -6,7 +6,7 @@
     lock: true
     force_init: yes
     backend_config:
-      region: "{{aws_region}}"
+      region: "{{region}}"
     state: "{{tf_state}}"
     variables:
       instance_name: "{{instance_name}}"
