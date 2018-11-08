@@ -4,6 +4,8 @@
     project_path: '{{ playbook_dir }}/terraform-scripts/providers/{{provider}}'
     lock: true
     force_init: yes
+    backend_config:
+      region: "{{region}}"
     state: "{{tf_state}}"
     variables:
       instance_name: "{{instance_name}}"
@@ -21,5 +23,5 @@
   when: tf_state == "present"
 
 - name: Demonstrating that Ansible can access Terraform variables
-  shell: "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
+  shell: echo "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
   ignore_errors: yes
