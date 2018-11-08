@@ -27,6 +27,6 @@
   debug:
     msg: "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
     when: tf_output.outputs.address.value is defined
-
+   debug:
     msg: "No tf_output was generated!"
-    when: tf_output.outputs.address.value is undefined 
+    when: tf_output.outputs.address.value is undefined
