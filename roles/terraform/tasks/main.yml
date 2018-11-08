@@ -24,5 +24,5 @@
   when: tf_state == "present"
 
 - name: Demonstrating that Ansible can access Terraform variables if they exist in tf_output
-  shell: echo "This is a Terraform variable --> {{ tf_output.outputs.address.value }}"
+  debug: msg="This is a Terraform variable tf_output.outputs.address.value --> {{ tf_output.outputs.address.value }}"
   ignore_errors: yes
